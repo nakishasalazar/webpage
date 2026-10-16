@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Novatrix Hub – Where ideas become ventures</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{
+  --bg:#f6f7fd;--surface:#fff;--ink:#14163a;--muted:#5b5f86;--line:#dfe2f3;
+  --brand:#3b32e0;--brand-2:#6a5cff;--brand-ink:#fff;--accent:#ff7a59;--hero:#241fa8;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1026;--surface:#171a3b;--ink:#eef0ff;--muted:#a3a8d6;--line:#2a2e5e;
+  --brand:#7d73ff;--brand-2:#9a92ff;--brand-ink:#0e1026;--accent:#ff8f72;--hero:#1b1780;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1026;--surface:#171a3b;--ink:#eef0ff;--muted:#a3a8d6;--line:#2a2e5e;
+  --brand:#7d73ff;--brand-2:#9a92ff;--brand-ink:#0e1026;--accent:#ff8f72;--hero:#1b1780;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 "DM Sans",system-ui,sans-serif;min-height:100%}
+h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;line-height:1.1;margin:0;letter-spacing:-.02em}
+img,svg{max-width:100%}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+section{padding:4.5rem 0}
+.sec-head{text-align:center;max-width:36rem;margin:0 auto 2.5rem}
+.sec-head h2{font-size:clamp(1.7rem,4vw,2.4rem)}
+.sec-head p{color:var(--muted);margin:.7rem 0 0}
+.btn{display:inline-flex;align-items:center;gap:.5rem;border:0;cursor:pointer;font:700 .95rem "DM Sans",sans-serif;padding:.8rem 1.4rem;border-radius:999px;background:var(--brand);color:var(--brand-ink);transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-2px);background:var(--brand-2)}
+.btn.light{background:#fff;color:#241fa8}
+.btn.accent{background:var(--accent);color:#2a0f06}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:.6rem;font:800 1.2rem "Bricolage Grotesque",sans-serif}
+nav ul{display:flex;gap:1.6rem;list-style:none;margin:0;padding:0;font-weight:500}
+nav a:hover{color:var(--brand)}
+.bar-r{display:flex;gap:.6rem;align-items:center}
+.icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:grid;place-items:center;font-size:1.1rem}
+.burger{display:none}
+@media (max-width:820px){
+  .burger{display:grid}
+  nav{position:absolute;inset:64px 0 auto 0;background:var(--surface);border-bottom:1px solid var(--line);display:none;padding:1rem 1.25rem}
+  nav.open{display:block}
+  nav ul{flex-direction:column;gap:1rem}
+  .bar .btn.join{display:none}
+}
+
+/* hero */
+.hero{background:linear-gradient(135deg,var(--hero),#4b3fe8 70%,#6a5cff);color:#fff;padding:4rem 0 5rem;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:2rem;align-items:center}
+.hero h1{font-size:clamp(2.3rem,6vw,4rem);font-weight:800}
+.hero p{max-width:30rem;opacity:.9;margin:1.2rem 0 1.8rem;font-size:1.08rem}
+.hero .acts{display:flex;flex-wrap:wrap;gap:.8rem}
+.hero .btn.ghost{background:transparent;border:2px solid rgba(255,255,255,.5);color:#fff}
+.stats{display:flex;gap:2rem;margin-top:2.2rem;flex-wrap:wrap}
+.stats b{display:block;font:800 1.7rem "Bricolage Grotesque",sans-serif}
+.stats span{font-size:.85rem;opacity:.8}
+.hero svg{width:100%;height:auto}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr}.hero svg{max-width:420px;margin:0 auto}}
+
+/* services */
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.8rem;transition:.2s}
+.svc:hover,.svc.on{background:var(--brand);color:var(--brand-ink);transform:translateY(-4px)}
+.svc.on p,.svc:hover p{color:inherit;opacity:.88}
+.svc .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:1.5rem;background:color-mix(in srgb,var(--brand) 14%,transparent);margin-bottom:1rem}
+.svc h3{font-size:1.25rem;margin-bottom:.5rem}
+.svc p{margin:0;color:var(--muted);font-size:.95rem}
+@media (max-width:820px){.cards3{grid-template-columns:1fr}}
+
+/* find */
+.find{background:linear-gradient(120deg,#2b3fd8,#4a59f0 60%,#8a7bff);color:#fff;border-radius:28px;padding:3rem clamp(1.2rem,4vw,3rem);position:relative;overflow:hidden}
+.find h2{font-size:clamp(1.7rem,4vw,2.4rem)}
+.find p{opacity:.9;max-width:32rem;margin:.6rem 0 1.5rem}
+.tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.8rem}
+.tabs button{border:0;cursor:pointer;font:500 .9rem "DM Sans",sans-serif;padding:.45rem 1rem;border-radius:999px;background:rgba(255,255,255,.16);color:#fff}
+.tabs button[aria-pressed="true"]{background:#fff;color:#241fa8;font-weight:700}
+.sbox{display:flex;gap:.6rem;background:#fff;border-radius:16px;padding:.5rem;max-width:640px}
+.sbox input{flex:1;min-width:0;border:0;outline:0;font:400 1rem "DM Sans",sans-serif;padding:.6rem .8rem;background:transparent;color:#14163a}
+.sbox input:focus-visible{outline:0}
+.sbox:focus-within{box-shadow:0 0 0 3px var(--accent)}
+@media (max-width:520px){.sbox{flex-direction:column}}
+
+/* projects */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.2rem}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.thumb{aspect-ratio:16/10;position:relative}
+.thumb svg{position:absolute;inset:0;width:100%;height:100%}
+.tag{position:absolute;top:.8rem;left:.8rem;background:#fff;color:#241fa8;font:700 .75rem "DM Sans",sans-serif;padding:.25rem .7rem;border-radius:999px}
+.card .body{padding:1.2rem 1.3rem 1.4rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.card h3{font-size:1.15rem}
+.card p{margin:0;color:var(--muted);font-size:.92rem;flex:1}
+.meta{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted);border-top:1px solid var(--line);padding-top:.7rem;margin-top:.4rem}
+.meta b{color:var(--ink)}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:2rem}
+
+/* spaces */
+.spaces{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.sp{border-radius:18px;min-height:260px;padding:1.2rem;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;position:relative;overflow:hidden}
+.sp h3{font-size:1.15rem}
+.sp span{font-size:.85rem;opacity:.9}
+.sp::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,40,.7),transparent 60%)}
+.sp>*{position:relative}
+.sp:nth-child(1){background:linear-gradient(150deg,#3b32e0,#9a92ff)}
+.sp:nth-child(2){background:linear-gradient(150deg,#0e8f8a,#6ee0c8)}
+.sp:nth-child(3){background:linear-gradient(150deg,#e2563a,#ffb08a)}
+.sp:nth-child(4){background:linear-gradient(150deg,#1b1f5c,#4e5bd6)}
+.sp .glyph{position:absolute;top:1rem;right:1rem;font-size:2.4rem;opacity:.9}
+@media (max-width:900px){.spaces{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.spaces{grid-template-columns:1fr}.sp{min-height:200px}}
+
+/* contact */
+.contact{background:#1a1f55;color:#fff;padding:4.5rem 0}
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.contact h2{font-size:clamp(1.7rem,4vw,2.4rem)}
+.contact p{opacity:.85;max-width:28rem}
+.info{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;gap:.6rem;opacity:.95}
+form{background:var(--surface);color:var(--ink);border-radius:20px;padding:1.8rem;display:grid;gap:1rem}
+form h3{font-size:1.3rem}
+label{font-size:.85rem;font-weight:700;display:grid;gap:.35rem}
+input.f,textarea,select{font:400 1rem "DM Sans",sans-serif;padding:.75rem .9rem;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);width:100%}
+textarea{min-height:96px;resize:vertical}
+.ok{color:#0a8f5a;font-weight:700;min-height:1.4em;margin:0}
+@media (max-width:820px){.contact .wrap{grid-template-columns:1fr}}
+footer{background:#12163f;color:#c5c9ee;padding:1.6rem 0;font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top" aria-label="Novatrix Hub home">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2l12 7v14l-12 7L4 23V9z" fill="var(--brand)"/><path d="M10 21V11l12 10V11" stroke="#fff" stroke-width="2.6" fill="none" stroke-linejoin="round"/></svg>
+      Novatrix Hub
+    </a>
+    <nav id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#spaces">Spaces</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="bar-r">
+      <button class="icon-btn" id="theme" aria-label="Toggle dark mode">◐</button>
+      <a class="btn join" href="#contact">Join the hub</a>
+      <button class="icon-btn burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="about">
+  <div class="wrap">
+    <div>
+      <h1>Where bold ideas become real ventures</h1>
+      <p>Novatrix Hub is an innovation community for founders, researchers and makers. Share a workspace, find mentors, and build with people who ship.</p>
+      <div class="acts">
+        <a class="btn light" href="#programs">Explore programs</a>
+        <a class="btn ghost" href="#contact">Book a visit</a>
+      </div>
+      <div class="stats">
+        <div><b>120+</b><span>Startups launched</span></div>
+        <div><b>45</b><span>Expert mentors</span></div>
+        <div><b>3,000</b><span>Community members</span></div>
+      </div>
+    </div>
+    <svg viewBox="0 0 400 340" role="img" aria-label="Network of connected ideas">
+      <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb08a"/><stop offset="1" stop-color="#ff7a59"/></linearGradient></defs>
+      <g stroke="rgba(255,255,255,.45)" stroke-width="2" fill="none">
+        <path d="M200 170L90 80M200 170L320 70M200 170L90 260M200 170L320 270M90 80L320 70M90 260L320 270M90 80L90 260M320 70L320 270"/>
+      </g>
+      <path d="M200 110l52 30v60l-52 30-52-30v-60z" fill="url(#g)"/>
+      <path d="M178 195v-50l44 50v-50" stroke="#fff" stroke-width="9" fill="none" stroke-linejoin="round"/>
+      <g fill="#fff"><circle cx="90" cy="80" r="22"/><circle cx="320" cy="70" r="18"/><circle cx="90" cy="260" r="18"/><circle cx="320" cy="270" r="24"/></g>
+      <g fill="#3b32e0" font-size="20" text-anchor="middle" font-family="sans-serif"><text x="90" y="87">💡</text><text x="320" y="77">🚀</text><text x="90" y="267">🔬</text><text x="320" y="278">🤝</text></g>
+    </svg>
+  </div>
+</section>
+
+<section id="programs">
+  <div class="wrap">
+    <div class="sec-head"><h2>What we offer</h2><p>Three ways to grow your idea, from the first sketch to your first customers.</p></div>
+    <div class="cards3">
+      <article class="svc on"><div class="ic">🚀</div><h3>Incubation</h3><p>A 6‑month program with mentors, seed funding access and weekly build reviews.</p></article>
+      <article class="svc"><div class="ic">🛠️</div><h3>Co‑working &amp; Labs</h3><p>Desks, prototyping labs and meeting rooms, open 24/7 for members.</p></article>
+      <article class="svc"><div class="ic">🎓</div><h3>Workshops &amp; Events</h3><p>Hackathons, demo days and talks on product, AI, hardware and funding.</p></article>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="find" id="find">
+      <h2>Find your next collaborator or project</h2>
+      <p>Search the hub's active projects by focus area or keyword.</p>
+      <div class="tabs" role="group" aria-label="Filter by category">
+        <button aria-pressed="true" data-f="all">All</button>
+        <button aria-pressed="false" data-f="AI">AI</button>
+        <button aria-pressed="false" data-f="Climate">Climate</button>
+        <button aria-pressed="false" data-f="Health">Health</button>
+        <button aria-pressed="false" data-f="Hardware">Hardware</button>
+      </div>
+      <div class="sbox">
+        <input id="q" type="search" placeholder="Search projects, e.g. solar, vision, wearable" aria-label="Search projects">
+        <button class="btn accent" id="go" type="button">Search</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" style="padding-top:2.5rem">
+  <div class="wrap">
+    <div class="sec-head"><h2>Projects built at Novatrix</h2><p>A few teams currently in residence.</p></div>
+    <div class="grid" id="grid" aria-live="polite"></div>
+  </div>
+</section>
+
+<section id="spaces" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><h2>Spaces made for making</h2><p>Work where it suits you, alone or with the team.</p></div>
+    <div class="spaces">
+      <div class="sp"><span class="glyph">💻</span><h3>Open Studio</h3><span>80 flexible desks</span></div>
+      <div class="sp"><span class="glyph">⚙️</span><h3>Hardware Lab</h3><span>3D printers, laser cutter, soldering</span></div>
+      <div class="sp"><span class="glyph">🎤</span><h3>Demo Stage</h3><span>Pitch nights for 150 guests</span></div>
+      <div class="sp"><span class="glyph">☕</span><h3>Founders Lounge</h3><span>Quiet corners and good coffee</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Ready to build with us?</h2>
+      <p>Tell us about your idea. Our team replies within two working days with next steps.</p>
+      <ul class="info"><li>📍 12 Innovation Avenue, Tech District</li><li>✉️ hnovatrixhubvatrixhub.com</li><li>📞+1 0981624336940</li></ul>
+    </div>
+    <form id="form" novalidate>
+      <h3>Send us a message</h3>
+      <label>Name<input class="f" name="name" required autocomplete="name"></label>
+      <label>Email<input class="f" name="email" type="email" required autocomplete="email"></label>
+      <label>I'm interested in
+        <select name="topic"><option>Novatrix</option><option>Co‑working &amp; Labs</option><option>Workshops &amp; Events</option></select>
+      </label>
+      <label>Message<textarea name="msg"></textarea></label>
+      <button class="btn" type="submit">Send message</button>
+      <p class="ok" id="ok" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+<footer><div class="wrap"><span>© 2026 Novatrix Hub. All rights reserved.</span><span>Built for people who build.</span></div></footer>
+
+<script>
+const P=[
+ ["AI","Visora","Computer vision that spots defects on factory lines in real time.","Seed","8 members","#3b32e0","#9a92ff"],
+ ["Climate","SunLoop","Low‑cost solar storage for off‑grid clinics and schools.","Prototype","5 members","#0e8f8a","#6ee0c8"],
+ ["Health","PulseBand","A wearable that tracks recovery after heart surgery.","Pilot","6 members","#e2563a","#ffb08a"],
+ ["Hardware","TerraBot","Small autonomous rovers that map soil health on farms.","Prototype","7 members","#1b1f5c","#4e5bd6"],
+ ["AI","Lingua Desk","Live translation for support teams across 40 languages.","Launched","9 members","#6a3de8","#c6a8ff"],
+ ["Climate","CarbonLens","Simple carbon accounting for small manufacturers.","Seed","4 members","#127a4a","#a2e6a8"]
+];
+const grid=document.getElementById('grid'),q=document.getElementById('q');
+let cat='all';
+function esc(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function render(){
+  const t=q.value.trim().toLowerCase();
+  const r=P.filter(p=>(cat==='all'||p[0]===cat)&&(!t||(p[1]+' '+p[2]+' '+p[0]).toLowerCase().includes(t)));
+  grid.innerHTML=r.length?r.map(p=>`<article class="card"><div class="thumb" style="background:linear-gradient(135deg,${p[5]},${p[6]})"><svg viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.5"><circle cx="40" cy="55" r="26"/><circle cx="110" cy="40" r="34"/><path d="M40 55L110 40M60 90l70-30"/></g><circle cx="40" cy="55" r="5" fill="#fff"/><circle cx="110" cy="40" r="7" fill="#fff"/></svg><span class="tag">${esc(p[0])}</span></div><div class="body"><h3>${esc(p[1])}</h3><p>${esc(p[2])}</p><div class="meta"><span>Stage: <b>${esc(p[3])}</b></span><span>${esc(p[4])}</span></div></div></article>`).join(''):'<p class="empty">No projects match yet. Try another keyword or category.</p>';
+}
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-pressed','false'));
+  b.setAttribute('aria-pressed','true');cat=b.dataset.f;render();
+});
+q.oninput=render;
+document.getElementById('go').onclick=()=>{render();document.getElementById('projects').scrollIntoView()};
+q.onkeydown=e=>{if(e.key==='Enter')document.getElementById('go').click()};
+render();
+
+const nav=document.getElementById('nav'),bg=document.getElementById('burger');
+bg.onclick=()=>{const o=nav.classList.toggle('open');bg.setAttribute('aria-expanded',o)};
+nav.querySelectorAll('a').forEach(a=>a.onclick=()=>{nav.classList.remove('open');bg.setAttribute('aria-expanded','false')});
+document.getElementById('theme').onclick=()=>{
+  const d=document.documentElement,dark=getComputedStyle(d).colorScheme==='dark';
+  d.setAttribute('data-theme',dark?'light':'dark');
+  try{localStorage.setItem('nx-theme',dark?'light':'dark')}catch(e){}
+};
+try{const s=localStorage.getItem('nx-theme');if(s)document.documentElement.setAttribute('data-theme',s)}catch(e){}
+
+document.getElementById('form').onsubmit=e=>{
+  e.preventDefault();
+  const f=e.target,ok=document.getElementById('ok');
+  if(!f.name.value.trim()||!/^\S+@\S+\.\S+$/.test(f.email.value)){ok.style.color='#d03a3a';ok.textContent='Enter your name and a valid email address.';return}
+  ok.style.color='';ok.textContent='Thanks, '+f.name.value.trim()+'. We will reply soon.';f.reset();
+};
+</script>
+</body>
+</html>
